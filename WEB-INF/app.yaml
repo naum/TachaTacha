@@ -1,0 +1,3 @@
+application: tacha-tacha
+version: 1
+runtime: jruby
