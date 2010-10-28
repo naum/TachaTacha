@@ -16,4 +16,10 @@ get '/' do
   erb :index
 end
 
+get '/stirup' do
+  require 'creole'
+  Creole.creolize("**Hello //all//, and welcome to tacha tacha**")
+end
+
+
 

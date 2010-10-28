@@ -7,3 +7,4 @@ bundle_path ".gems/bundler_gems"
 gem 'appengine-rack', '0.0.11.pre'
 gem 'dm-appengine'
 gem 'sinatra'
+gem 'creole'
