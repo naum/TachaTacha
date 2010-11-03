@@ -1,0 +1,4 @@
+cron:
+- description: keep tacha-tacha alive
+  url: /infodump
+  schedule: every 5 minutes

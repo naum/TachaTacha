@@ -2,4 +2,5 @@
 .gems/
 WEB-INF/
 !WEB-INF/app.yaml
+!WEB-INF/cron.yaml
 bin/
