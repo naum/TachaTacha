@@ -1,3 +1,7 @@
 <article>
-  <p>Now is the time!</p>
+  <ul>
+    <% @articles.each do |a| %>
+    <li><a href="/article/<%= u(a.title) %>"><%= a.title %></a></li>
+    <% end %>
+  </ul>
 </article>

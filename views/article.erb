@@ -1,0 +1,9 @@
+<h2><%= @article.title %></h2>
+<div id="pagecontent">
+<%= @hbody %>
+</div>
+<nav>
+<% if auth_editor? %>
+  <a href="/edit/<%= e(@article.title) %>">edit</a>
+<% end %>
+</nav>
