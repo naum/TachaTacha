@@ -1,0 +1,28 @@
+/*=============================================================================
+
+  COLOR CODES
+
+  #FFF0ED #FFD8D1 #FFB2A4 #FF8A75
+  #FF6347
+  #BF4A35 #803224 #401912 #1A0A07
+
+=============================================================================*/
+
+body { 
+  color: #1A0A07;
+  font-family: sans-serif;
+  font-size:101%;
+}
+a { text-decoration:none; }
+a:link { color:#803224; }
+a:visited { color:#FFB2A4; }
+a:hover, a:active { text-decoration:underline; }
+h1, h2, h3, h4, h5, h6 { color:#401912; }
+textarea { width:100%; }
+
+#pagewrapper { width:640px; margin:auto; }
+
+.formblock { margin:1.2em auto; }
+.justl { text-align:left; }
+.justc { text-align:center; }
+.justr { text-align:right; }
