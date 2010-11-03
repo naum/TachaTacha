@@ -20,8 +20,7 @@ helpers do
   alias_method :e, :escape
   alias_method :h, :escape_html
   def auth_editor?
-    true
-    #AppEngine::Users.admin?
+    AppEngine::Users.logged_in? && AppEngine::Users.admin?
   end
   def u(str)
     #CGI::unescape(str)
@@ -42,13 +41,37 @@ get '/article/:title' do
 end
 
 get '/edit/:title' do
+  redirect '/unauthorized' unless auth_editor?
   @title = params[:title]
   @article = Article.first(:title => u(params[:title]))
   @body = (@article) ? @article.body : ''
   erb :edit
 end
 
+get '/infodump' do
+  pout = "<p>" + request.inspect 
+  if AppEngine::Users.logged_in?
+    u = AppEngine::Users.current_user()
+    pout << "<p>email: #{u.email}"
+    pout << "<p>nickname: #{u.nickname}"
+  end
+  pout
+end
+
+get '/login' do
+  redirect AppEngine::Users.create_login_url('/')
+end
+
+get '/logout' do
+  redirect AppEngine::Users.create_logout_url('/')
+end
+
+get '/unauthorized' do
+  erb :unauthorized
+end
+
 post '/edit' do
+  redirect '/unauthorized' unless auth_editor?
   @title = params[:title]
   ts = Time.now.to_i
   @article = Article.first(:title => u(params[:title]))
