@@ -5,3 +5,13 @@
     <% end %>
   </ul>
 </article>
+<footer>
+<% if auth_editor? %>
+  <nav>
+    <form method="get" action="/edit">
+      <input type="text" name="title" id="title" size="40" />
+      <input class="linkbutton" type="submit" name="op" value="edit" />
+    </form>
+  </nav>
+<% end %>
+</footer>

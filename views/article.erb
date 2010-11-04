@@ -2,8 +2,10 @@
 <div id="pagecontent">
 <%= @hbody %>
 </div>
+<footer>
 <nav>
 <% if auth_editor? %>
-<a href="/edit/<%= @article.title %>">edit</a>
+<a class="linkbutton" href="/edit/<%= @article.title %>">edit</a>
 <% end %>
 </nav>
+</footer>

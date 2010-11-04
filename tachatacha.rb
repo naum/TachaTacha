@@ -33,6 +33,10 @@ get '/' do
   erb :index
 end
 
+get '/404' do
+  erb :notfound
+end
+
 get '/article/:title' do
   @article = Article.first(:title => u(params[:title]))
   redirect "/edit/#{params[:title]}" unless @article
@@ -40,8 +44,16 @@ get '/article/:title' do
   erb :article
 end
 
+get '/edit' do
+  redirect "/edit/#{params[:title]}"
+end
+
+get '/edit/' do
+  erb :emptyq
+end
+
 get '/edit/:title' do
-  redirect '/unauthorized' unless auth_editor?
+  redirect '/404' unless auth_editor?
   @title = params[:title]
   @article = Article.first(:title => u(params[:title]))
   @body = (@article) ? @article.body : ''
@@ -68,6 +80,10 @@ end
 
 get '/unauthorized' do
   erb :unauthorized
+end
+
+not_found do
+  erb :notfound
 end
 
 post '/edit' do

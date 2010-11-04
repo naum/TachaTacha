@@ -17,12 +17,27 @@ a { text-decoration:none; }
 a:link { color:#803224; }
 a:visited { color:#FFB2A4; }
 a:hover, a:active { text-decoration:underline; }
+footer { margin-top:1.8em; text-align:center; }
+header { margin-bottom: 1.8em; }
+header h1 { font-family:cursive; width:100%; text-align:center; }
+input[type=text] { font-size:1.1em; }
+input[type=submit] { border-style:none; color:#ff6347; cursor:pointer; }
 h1, h2, h3, h4, h5, h6 { color:#401912; }
 textarea { width:100%; }
 
 #pagewrapper { width:640px; margin:auto; }
 
 .formblock { margin:1.2em auto; }
+.linkbutton {
+  background: #fff0ed;
+  border-color: #ff6e47;
+  border-radius: 6px;
+  font-family: cursive;
+  font-size:1.1em;
+  padding: 0.3em 0.6em; 
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
 .justl { text-align:left; }
 .justc { text-align:center; }
 .justr { text-align:right; }
