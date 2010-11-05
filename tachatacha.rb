@@ -22,6 +22,12 @@ helpers do
   def auth_editor?
     AppEngine::Users.logged_in? && AppEngine::Users.admin?
   end
+  def add_dashes(str) 
+    str.gsub(/ /, '-')
+  end
+  def strip_dashes(str)
+    str.gsub(/\-/, ' ')
+  end
   def u(str)
     #CGI::unescape(str)
     str
@@ -38,7 +44,8 @@ get '/404' do
 end
 
 get '/article/:title' do
-  @article = Article.first(:title => u(params[:title]))
+  clean_title = strip_dashes params[:title]
+  @article = Article.first(:title => clean_title)
   redirect "/edit/#{params[:title]}" unless @article
   @hbody = Creare.creolize(@article.body) 
   erb :article
@@ -54,7 +61,7 @@ end
 
 get '/edit/:title' do
   redirect '/404' unless auth_editor?
-  @title = params[:title]
+  @title = strip_dashes params[:title]
   @article = Article.first(:title => u(params[:title]))
   @body = (@article) ? @article.body : ''
   erb :edit
@@ -107,7 +114,8 @@ post '/edit' do
     )
   end
   @article.save
-  redirect "/article/#{@title}"
+  pretty_title = @title.gsub(/ /, '-')
+  redirect "/article/#{pretty_title}"
 end
 
 

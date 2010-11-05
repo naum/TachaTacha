@@ -23,7 +23,7 @@ header h1 { font-family:cursive; width:100%; text-align:center; }
 input[type=text] { font-size:1.1em; }
 input[type=submit] { border-style:none; color:#ff6347; cursor:pointer; }
 h1, h2, h3, h4, h5, h6 { color:#401912; }
-textarea { font-family:monospace; font-size:1.1em; width:100%; }
+textarea { font-family:monospace; font-size:100%; width:100%; }
 
 #pagewrapper { width:640px; margin:auto; }
 
