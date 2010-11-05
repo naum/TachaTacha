@@ -92,8 +92,13 @@ post '/edit' do
   ts = Time.now.to_i
   @article = Article.first(:title => u(params[:title]))
   if (@article) 
-    @article[:body] = params[:body]
-    @article[:mtime] = ts
+    if params[:body].strip.length > 0
+      @article[:body] = params[:body]
+      @article[:mtime] = ts
+    else
+      @article.destroy
+      redirect '/'
+    end
   else
     @article = Article.new(
       :title => params[:title], 
