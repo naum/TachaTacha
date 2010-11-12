@@ -2,7 +2,6 @@ require 'sinatra'
 require 'dm-core'
 require 'appengine-apis/users'
 require 'creare'
-require 'cgi'
 
 DataMapper.setup(:default, "appengine://auto")
 
@@ -19,11 +18,11 @@ helpers do
   include Rack::Utils
   alias_method :e, :escape
   alias_method :h, :escape_html
-  def auth_editor?
-    AppEngine::Users.logged_in? && AppEngine::Users.admin?
-  end
   def add_dashes(str) 
     str.gsub(/ /, '-')
+  end
+  def auth_editor?
+    AppEngine::Users.logged_in? && AppEngine::Users.admin?
   end
   def strip_dashes(str)
     str.gsub(/\-/, ' ')
